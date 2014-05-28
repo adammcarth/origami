@@ -90,6 +90,18 @@ PRINT "Hello, world! Your total invoice price is $" + total + " plus $" + (total
 
 ### Testing Table
 
+| Scenario                       | Test Data                                 | Expected Result | Actual Result   | Evidence             |
+|:------------------------------:|:-----------------------------------------:|:---------------:|:---------------:|:--------------------:|
+| Sign in takumi                 | username: takumi, password: 123456        | true            | true            | [Screenshot][test-8] |
+| Get the price of 3 lessons     | lessons: 3, order_cost: 0                 | 75              | 75              | [Screenshot][test-1] |
+| 20% discount on 5+ lessons     | lessons: 5, order_cost: 0                 | 100             | 100             | [Screenshot][test-2] |
+| Doesn't apply both discounts   | lessons: 5, order_cost: 51                | 100             | 100             | [Screenshot][test-3] |
+| 10% discount when > $50        | lessons: 3, order_cost: 175               | 67.5            | 67.5            | [Screenshot][test-4] |
+| Returns 0 with no lessons      | lessons: 0, order_cost: 0                 | 0               | 0               | [Screenshot][test-5] |
+| Same scenario with order       | lessons: 0, order_cost: 90                | 0               | 0               | [Screenshot][test-6] |
+| Calculate the GST              | lessons: 8, order_cost: 0                 | 16              | 16              | [Screenshot][test-7] |
+| Update prices (default: 25)    | lesson_price: 28                          | 28              | 28              | [Screenshot][test-9] |
+
 ### Are you serious?
 
 Unfortunately.
@@ -105,6 +117,12 @@ Unfortunately.
   [jtask]: https://github.com/adammcarthur/jtask
   [vcaa]: http://www.vcaa.vic.edu.au/Pages/correspondence/bulletins/2010/June/vce_study.aspx#4
 
-  [test-1]: http://imgkk.com/blah1
-  [test-2]: http://imgkk.com/blah2
-  [test-3]: http://imgkk.com/blah3
+  [test-1]: http://imgkk.com/i/1n7y.png
+  [test-2]: http://imgkk.com/i/eyqb.png
+  [test-3]: http://imgkk.com/i/611k.png
+  [test-4]: http://imgkk.com/i/5j2o.png
+  [test-5]: http://imgkk.com/i/6e1s.png
+  [test-6]: http://imgkk.com/i/imix.png
+  [test-7]: http://imgkk.com/i/fbgj.png
+  [test-8]: http://imgkk.com/i/l0_v.png
+  [test-9]: http://imgkk.com/i/yroj.png
