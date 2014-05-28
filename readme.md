@@ -19,36 +19,29 @@ Sounds fun, right? Let's get the party started...
 // is $25.00, however this value can be changed by an admin (on the settings page).
 lesson_price = Input lesson_price
 
-Function calculate_lesson_price_only(num_lessons)
+Function calculate_lesson_price(num_lessons, order_cost)
   grand_total = num_lessons * lesson_price
   IF num_lessons > 4
-    // Take 20% off the final price (since they have ordered 5 or more lessons)
-    grand_total = grand_total - (grand_total * 0.2)
-  ENDIF
+    // Apply a 20% discount
+    grand_total = discount(grand_total, 0.2)
+  ELSEIF order_cost > 50
+    // Apply a 10% discount
+    grand_total = discount(grand_total, 0.1)
+  END IF
 
   return grand_total
 End Function
 
-Function calculate_lesson_price_with_big_order(num_lessons)
-  IF num_lessons < 5
-    grand_total = num_lessons * lesson_price
-    // Apply the 10% discount
-    grand_total = grand_total - (grand_total * 0.1)
-  ELSE
-    // We only need the standard lesson price
-    calculate_lesson_price_only(num_lessons)
-  ENDIF
+Function discount(price, percentage)
+  return price - (price * percentage)
 End Function
 
-IF Input order_price == nil or 0 or is less than 50
-  // No overly special discount needs to be applied, 
-  // so calculate the base lesson cost only.
-  total = calculate_lesson_price_only(Input num_lessons)
-ELSE
-  // We need to calculate the discount for both
-  // the lesson and the order (to ultimately determine which one is greater).
-  total = calculate_lesson_price_with_big_order(Input num_lessons, Input order_price)
-ENDIF
+Function gst(total)
+  return total * 0.1
+End Function
+
+total = calculate-lesson_price(3)
+gst = gst(total)
 
 // Show our awesome work to the world...
 PRINT "Hello, world! Your total invoice price is $" + total + " plus $" + (total * 0.1) + " GST."
