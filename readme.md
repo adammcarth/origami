@@ -108,7 +108,14 @@ Unfortunately.
 
 ### Evaluation Criteria
 
-
+- User sessions work and are secure
+- The user interface is not difficult to navigate
+- Outputs of the system are clear and accurate
+- Website feels smooth and works efficiently
+- Prices can be updated
+- Lesson prices can be calculated
+- GST is calculated correctly
+- Code is well formatted and sufficiently documented
 
 
   [demo]: http://domo-arigato-origami.herokuapp.com
