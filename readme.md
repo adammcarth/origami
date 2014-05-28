@@ -4,7 +4,7 @@
 
 In order to satisfy criteria outlined in the Software Requirements Specification, I have designed the following solution for Takumi Nakamura:
 
-This solution will take the form of a **web application**. Using this approach will provide Tukumi with a number of advantages, the most noteworthy being **accessibility** and the potential to **expand the scope** of the system in the future. The [live demo][demo] shows the latest working example as it would appear on Takumi's custom domain name (eg - ), and can therefore be accessed from anywhere in the world with a persistent internet connection. As opposed to a traditional "local" `.exe` software solution, a web application will have **no compatibility issues** with PC, Mac or Linux operating systems and works out-of-the-box with Desktop Computers, Laptops, Tablet Devices and Smart Phones. Furthermore, since it is available online, Takumi can still interact with their system if they're out of the office or away on a holiday.
+This solution will take the form of a **web application**. Using this approach will provide Tukumi with a number of advantages, the most noteworthy being **accessibility** and the potential to **expand the scope** of the system in the future. The [live demo][demo] shows the latest working example as it would appear on Takumi's custom domain name (eg - www.arigato-origami.com), and can therefore be accessed from anywhere in the world with a persistent internet connection. As opposed to a traditional "local" `.exe` software solution, a web application will have **no compatibility issues** with PC, Mac or Linux operating systems and works out-of-the-box with Desktop Computers, Laptops, Tablet Devices and Smart Phones. Furthermore, since it is available online, Takumi can still interact with their system if they're out of the office or away on a holiday.
 
 A web application will also allow Takumi to expand the scope of the system in the future. When the workload for manually inputting orders & classes becomes unmanageable - the system can be opened up to customers as a full public website so that they can do it themselves. This would not be difficult, as the foundations for the program will already be laid. Nevertheless, the private version will remain password protected for obvious reasons until Takumi chooses launch a proper website.
 
@@ -61,7 +61,7 @@ PRINT "Hello, world! Your total invoice price is $" + total + " plus $" + (total
 | password      | string        | 255   | The password that the user has chosen (hashed using enterprise grade encryption). |
 | salt          | string        | 255   | The random security salt that was generated to encrypt the password.              |
 
-#### Prices Model @ `storage/prices.json`
+#### Price Model @ `storage/prices.json`
 
 | Data Item     | Data Type     | Size* | Description                                                                       |
 |:-------------:|:-------------:|:-----:|:----------------------------------------------------------------------------------|
