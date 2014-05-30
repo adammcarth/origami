@@ -1,0 +1,18 @@
+<div class="login">
+  <form id="login" action="/new_session" method="post">
+    <div class="form-group">
+      <p>
+        <input type="text" id="username" name="username" class="form-tooltip-right" title="takumi" placeholder="Username">
+      </p>
+      <p>
+        <input type="password" id="password" name="password" class="form-tooltip-right" title="123456" placeholder="Password">
+      </p>
+    </div><!-- /.form-group -->
+    <div style="float:left; margin-top:15px;">
+      <div class="check">
+        <input type="checkbox" id="stay_signed_in" name="autologin" value="1" checked="true"><label for="stay_signed_in">Stay signed in?</label>
+      </div><!-- /.check -->
+    </div>
+    <input type="submit" id="submit_login" value="Login">
+  </form>
+</div><!-- /.login -->

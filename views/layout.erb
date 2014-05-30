@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml-transitional.dtd">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Domo Arigato Origami</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="language" content="Ruby">
+    <meta name="environment" content="<%= ENV["RACK_ENV"] %>">
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/ui.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <center><h1 class="business_name">Domo Arigato</h1></center>
+      <hr class="logo_underline" />
+      <% if @no_content_bg %>
+      <%= display_flash_notifications %>
+      <%= yield.code_indent(4) %>
+      <% else %>
+      <div class="content">
+        <div class="stack"></div>
+        <%= display_flash_notifications %>
+        <%= yield.code_indent(6) %>
+      </div><!-- /.content -->
+      <% end %>
+      <% if current_user %>
+      <div class="footer">
+        <a href="/" class="current">Home</a> <span class="divider">&#8226;</span>
+        <a href="/settings">Settings</a> <span class="divider">&#8226;</span>
+        <a href="/logout">Logout</a>
+      </div><!-- /.footer -->
+      <% end %>
+    </div><!-- /.wrapper -->
+    <!-- Javascript Files -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+  </body>
+</html>

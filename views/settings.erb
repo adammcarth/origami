@@ -1,0 +1,29 @@
+<form id="update_settings" action="/settings" method="post">
+  <legend>Account</legend>
+  <div class="row">
+    <div class="block block-2">
+      <div class="form-group">
+        <input type="text" id="username" name="username" placeholder="Username" value="<%= @user.username %>" required="true">
+      </div><!-- /.form-group -->
+    </div><!-- /.block-2 -->
+    <div class="block block-2">
+      <div class="form-group">
+        <p>
+          <input type="password" id="new_password" name="new_password" placeholder="Change password">
+        </p>
+        <p>
+          <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm new password">
+        </p>
+      </div><!-- /.form-group -->
+    </div><!-- /.block-2 -->
+  </div><!-- /.row -->
+  <div class="form-action">
+    <div class="left">
+      <a href="/" class="btn btn-grey">Back</a>
+    </div><!-- /.left -->
+    <div class="right">
+      <input type="submit" id="submit_update_settings" value="Update Settings">
+    </div><!-- /.right -->
+    <div class="clear"></div>
+  </div><!-- /.form-action -->
+</form>
