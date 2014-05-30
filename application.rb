@@ -16,20 +16,6 @@ class Origami < Sinatra::Base
     Dir["./helpers/*.rb"].each &method(:require)
   end
 
-  before do
-    # automatically signs the user in if the `autologin` cookie is present
-    if cookies[:autologin]
-      @user = JTask.get("users.json", 1)
-      # if the username and password match the one in storage
-      if @user.username == cookies[:autologin][:username] && @user.password == BCrypt::Engine.hash_secret(cookies[:autologin][:password], @user.salt)
-        session[:user] = @user.id
-      else
-        session[:notification] = ["error", "Could not automatically sign in because your username or password has changed."]
-        redirect "/login"
-      end
-    end
-  end
-
   #############################################################
   # MAIN APPLICATION LOGIC ####################################
   #############################################################
@@ -93,11 +79,6 @@ class Origami < Sinatra::Base
     # if the username and password match the one in storage
     if @user.username == params[:username] && @user.password == BCrypt::Engine.hash_secret(params[:password], @user.salt)
       session[:user] = @user.id
-      # If "stay signed in?" is checked
-      if params[:autologin] == 1
-        # expires in 14 days
-        response.set_cookie(:autologin, :value => {:username => params[:username], :password => params[:password]}, :expires => Time.now + 3600*24*14)
-      end
       redirect "/"
     else
       session[:notification] = ["error", "<b>Oops.</b> The login information you used appears to be invalid."]
