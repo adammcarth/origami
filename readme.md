@@ -40,7 +40,7 @@ Function gst(total)
   return total * 0.1
 End Function
 
-total = calculate-lesson_price(3)
+total = calculate_lesson_price(3)
 gst = gst(total)
 
 // Show our awesome work to the world...
