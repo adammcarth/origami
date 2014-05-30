@@ -71,6 +71,7 @@ PRINT "Hello, world! Your total invoice price is $" + total + " plus $" + (total
 
 | Data Item     | Data Type     | Size* | Description                                                                       |
 |:-------------:|:-------------:|:-----:|:----------------------------------------------------------------------------------|
+| id            | string        | 255   | The unique id number of the lesson booking. |
 | first_name    | string        | 255   | The first name of the student. |
 | last_name     | string        | 255   | The last name of the student. |
 | email         | string        | 255   | Student's email address. |
