@@ -1,6 +1,6 @@
 > Notice: This repository contains an assessment for my high school Software Development class. Chances are you don't want to be here, but if you do - read on. A live continuous deployment of the project can be found at [http://domo-arigato-origami.herokuapp.com][demo].
 
-# Solution Design
+# Solution Design ![codeship](https://www.codeship.io/projects/c8f0ebf0-c9bd-0131-eedd-762fd394af47/status "Codeship Status")
 
 In order to satisfy criteria outlined in the Software Requirements Specification, I have designed the following solution for Takumi Nakamura:
 
