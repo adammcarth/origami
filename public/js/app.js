@@ -73,7 +73,7 @@ $(document).ready(function() {
 
   // Update Settings Validations
   $("#update_settings").submit(function() {
-    if ($("#new_password").val().length < 6) {
+    if ($("#new_password").val().length < 6 && $("#new_password").val().length > 0) {
       var change = confirm("Your new password is very weak, are you sure you want to continue?");
       if (change === false) {
         event.preventDefault();
