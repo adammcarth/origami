@@ -57,7 +57,7 @@ class Origami < Sinatra::Base
     JTask.update("users.json", current_user, username: params[:username])
     # If the new passwords don't match, display an error message.
     if params[:new_password] != params[:confirm_password]
-      session[:notification] = ["warning", "<b>Warning:</b> Your system preferences couldn't be updated because your new passwords don't match."]
+      session[:notification] = ["error", "<b>Error:</b> Your system preferences couldn't be updated because your new passwords don't match."]
       redirect "/settings"
     end
     # We don't want to update a password if the field has been
@@ -67,7 +67,7 @@ class Origami < Sinatra::Base
       hashed_password = BCrypt::Engine.hash_secret(params[:new_password], salt)
       JTask.update("users.json", session[:user], {password: hashed_password, salt: salt})
     end
-    session[:notification] = ["info", "<b>Nice.</b> Your system preferences have been successfully updated."]
+    session[:notification] = ["success", "<b>Nice.</b> Your system preferences have been successfully updated."]
     redirect "/settings"
   end
 
