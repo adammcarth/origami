@@ -37,6 +37,7 @@ class Origami < Sinatra::Base
   # When a user visits the home page
   get "/" do
     authenticate!
+    @breadcrumb = "home"
     # render the homepage UI
     erb :index
   end
@@ -47,6 +48,7 @@ class Origami < Sinatra::Base
 
   get "/settings" do
     authenticate!
+    @breadcrumb = "settings"
     @user = JTask.get("users.json", current_user)
     erb :settings
   end
