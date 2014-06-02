@@ -28,7 +28,7 @@ class Origami < Sinatra::Base
     @lessons = JTask.get("lessons.json")
     @todays_lessons = Array.new
     @lessons.each do |lesson|
-      if Time.now.strftime("%d-%m") == Date.parse(lesson.lesson_time).strftime("%d-%m")
+      if Time.now.strftime("%e-%b-%G") == DateTime.parse(lesson.lesson_time).strftime("%e-%b-%G")
         @todays_lessons << lesson
       end
     end
@@ -38,6 +38,7 @@ class Origami < Sinatra::Base
 
   post "/api" do
     authenticate!
+    # Initialize variables from the URL's parameters
     first_name = params[:customer_fname]
     last_name = params[:customer_lname]
     email = params[:customer_email]
