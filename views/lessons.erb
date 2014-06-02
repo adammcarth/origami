@@ -1,0 +1,23 @@
+<a href="/">Return to Dashboard</a>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Lesson Time</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lessons.each do |lesson| %>
+    <tr>
+      <td><%= lesson.first_name %> <%= lesson.last_name %></td>
+      <td><%= lesson.email %></td>
+      <td><%= lesson.phone %></td>
+      <td><%= DateTime.parse(lesson.lesson_time).strftime("%a %e %b, %G at %l%P") %></td>
+      <td><a href="/delete_booking/<%= lesson.id %>">Cancel</a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

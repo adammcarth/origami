@@ -87,6 +87,14 @@ class Origami < Sinatra::Base
 
   get "/lessons" do
     authenticate!
+    @all_lessons = JTask.get("lessons.json")
+    @lessons = Array.new
+    @all_lessons.each do |lesson|
+      # Only show lessons that are in the future
+      if DateTime.parse(lesson.lesson_time).strftime("%e-%b-%G") > Time.now.strftime("%e-%b-%G")
+        @lessons << lesson
+      end
+    end
     erb :lessons
   end
 
