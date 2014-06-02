@@ -1,4 +1,6 @@
-<div class="alert alert-warning">Feel free to play around with these settings, but please ensure you reset your changes for the next person.<div class="close"></div></div>
+<% unless session[:msgRecieved] %>
+<div class="alert alert-warning">Feel free to play around with these settings, but please ensure you reset your changes for the next person.<div class="close" id="msgRecieved"></div></div>
+<% end %>
 <form id="update_settings" action="/settings" method="post">
   <legend>Account</legend>
   <div class="row">
@@ -17,6 +19,10 @@
         </p>
       </div><!-- /.form-group -->
     </div><!-- /.block-2 -->
+  </div><!-- /.row -->
+  <legend>Lessons</legend>
+  <div class="row" style="margin-bottom:40px;">
+    <input type="number" step="any" required="true" id="lesson_price" name="lesson_price" placeholder="Lesson price ($ per hour)" value="<%= @lesson_price %>">
   </div><!-- /.row -->
   <div class="form-action">
     <div class="left">

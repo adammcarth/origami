@@ -1,1 +1,227 @@
-<p>Coming soon :)</p>
+<div class="calendar">
+  <div class="row">
+    <h4>What's on for today?</h4>
+    <table>
+      <thead>
+        <tr>
+          <th class="nobg">TIME</th>
+          <th>DETAILS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="spec">9AM</td>
+          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "9" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+        </tr>
+        <tr>
+          <td class="specalt">10AM</td>
+          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "10" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+        </tr>
+        <tr>
+          <td class="spec">11AM</td>
+          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "11" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+        </tr>
+        <tr>
+          <td class="specalt">12PM</td>
+          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "12" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+        </tr>
+        <tr>
+          <td class="spec">1PM</td>
+          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "1" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+        </tr>
+        <tr>
+          <td class="specalt">2PM</td>
+          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "2" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+        </tr>
+        <tr>
+          <td class="spec">3PM</td>
+          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "3" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+        </tr>
+        <tr>
+          <td class="specalt">4PM</td>
+          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "4" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+        </tr>
+        <tr>
+          <td class="spec">5PM</td>
+          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "5" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- /.row -->
+
+  <div class="row">
+    <center>
+      <button class="btn btn-green" style="display:inline; margin-right:10px;" id="book_lesson">Book a lesson</button>
+      <a href="/lessons" style="text-decoration:none;"><button class="btn btn-navy" style="display:inline;">Manage Bookings</button></a>
+    </center>
+  </div><!-- /.row -->
+</div><!-- /.calendar -->
+
+<div class="lesson_calculator" style="display:none;">
+  <h4>Book a lesson</h4>
+  <form id="lesson_calculator" action="/api" method="post">
+    <div id="step-1" style="margin-bottom:20px;">
+      <div class="customer_info">
+        <legend>Customer Information</legend>
+        <div class="row">
+          <div class="block block-2">
+            <p>
+              <input type="text" id="customer_fname" name="customer_fname" placeholder="First Name" required="true">
+            </p>
+            <p>
+              <input type="text" id="customer_lname" name="customer_lname" placeholder="Last Name" required="true">
+            </p>
+          </div><!-- /.block-2 -->
+          <div class="block block-2">
+            <p>
+              <input type="email" id="customer_email" name="customer_email" placeholder="Email" required="true">
+            </p>
+            <p>
+              <input type="text" id="customer_phone" name="customer_phone" placeholder="Phone Number" required="true">
+            </p>
+            <p>
+              <input type="text" id="customer_address" name="customer_address" placeholder="Address" required="true">
+            </p>
+          </div><!-- /.block-2 -->
+        </div><!-- /.row -->
+      </div><!-- /.customer-info -->
+    </div><!-- /#step-1 -->
+    <div id="step-2">
+      <legend>Lesson Times</legend>
+      <div class="row" style="margin-bottom:15px;">
+        <select class="select_large" id="numLessons" name="numLessons">
+          <option value="0" id="addName">How many lessons would they like to book?</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div><!-- /.row -->
+    </div><!-- /#step-2 -->
+    <div id="step-3">
+      <div class="row">
+        <div class="block block-2 timeslot 1">
+          <label>Lesson 1</label>
+          <p>
+            <input type="text" class="datetime date" id="date-1" name="" placeholder="Select Lesson Date">
+          </p>
+          <p>
+            <input type="text" class="datetime time" id="time-1" name="" placeholder="Select Lesson Time">
+          </p>
+        </div><!-- /.block-2 -->
+        <div class="block block-2 timeslot 2">
+          <label>Lesson 2</label>
+          <p>
+            <input type="text" class="datetime date" id="date-2" name="" placeholder="Select Lesson Date">
+          </p>
+          <p>
+            <input type="text" class="datetime time" id="time-2" name="" placeholder="Select Lesson Time">
+          </p>
+        </div><!-- /.block-2 -->
+      </div><!-- /.row -->
+      <div class="row">
+        <div class="block block-2 timeslot 3">
+          <label>Lesson 3</label>
+          <p>
+            <input type="text" class="datetime date" id="date-3" name="" placeholder="Select Lesson Date">
+          </p>
+          <p>
+            <input type="text" class="datetime time" id="time-3" name="" placeholder="Select Lesson Time">
+          </p>
+        </div><!-- /.block-2 -->
+        <div class="block block-2 timeslot 4">
+          <label>Lesson 4</label>
+          <p>
+            <input type="text" class="datetime date" id="date-4" name="" placeholder="Select Lesson Date">
+          </p>
+          <p>
+            <input type="text" class="datetime time" id="time-4" name="" placeholder="Select Lesson Time">
+          </p>
+        </div><!-- /.block-2 -->
+      </div><!-- /.row -->
+      <div class="row">
+        <div class="block block-2 timeslot 5">
+          <label>Lesson 5</label>
+          <p>
+            <input type="text" class="datetime date" id="date-5" name="" placeholder="Select Lesson Date">
+          </p>
+          <p>
+            <input type="text" class="datetime time" id="time-5" name="" placeholder="Select Lesson Time">
+          </p>
+        </div><!-- /.block-2 -->
+        <div class="block block-2 timeslot 6">
+          <label>Lesson 6</label>
+          <p>
+            <input type="text" class="datetime date" id="date-6" name="" placeholder="Select Lesson Date">
+          </p>
+          <p>
+            <input type="text" class="datetime time" id="time-6" name="" placeholder="Select Lesson Time">
+          </p>
+        </div><!-- /.block-2 -->
+      </div><!-- /.row -->
+      <div class="row">
+        <div class="block block-2 timeslot 7">
+          <label>Lesson 7</label>
+          <p>
+            <input type="text" class="datetime date" id="date-7" name="" placeholder="Select Lesson Date">
+          </p>
+          <p>
+            <input type="text" class="datetime time" id="time-7" name="" placeholder="Select Lesson Time">
+          </p>
+        </div><!-- /.block-2 -->
+        <div class="block block-2 timeslot 8">
+          <label>Lesson 8</label>
+          <p>
+            <input type="text" class="datetime date" id="date-8" name="" placeholder="Select Lesson Date">
+          </p>
+          <p>
+            <input type="text" class="datetime time" id="time-8" name="" placeholder="Select Lesson Time">
+          </p>
+        </div><!-- /.block-2 -->
+      </div><!-- /.row -->
+      <div class="row">
+        <div class="block block-2 timeslot 9">
+          <label>Lesson 9</label>
+          <p>
+            <input type="text" class="datetime date" id="date-9" name="" placeholder="Select Lesson Date">
+          </p>
+          <p>
+            <input type="text" class="datetime time" id="time-9" name="" placeholder="Select Lesson Time">
+          </p>
+        </div><!-- /.block-2 -->
+        <div class="block block-2 timeslot 10">
+          <label>Lesson 10</label>
+          <p>
+            <input type="text" class="datetime date" id="date-10" name="" placeholder="Select Lesson Date">
+          </p>
+          <p>
+            <input type="text" class="datetime time" id="time-10" name="" placeholder="Select Lesson Time">
+          </p>
+        </div><!-- /.block-2 -->
+      </div><!-- /.row -->
+    </div><!-- /#step-3 -->
+    <div id="step-4" style="margin-bottom:50px; margin-top:50px;">
+      <legend>Notes</legend>
+      <div class="row" style="margin-bottom:30px;">
+        <textarea id="notes" name="notes" style="height:125px;"></textarea>
+      </div><!-- /.row -->
+      <legend>Order Details</legend>
+      <div class="row">
+        <div class="block block-2">
+          <input type="number" step="any" class="input-skinny form-tooltip-right" title="$ Amount Purchased By Customer" id="order_price" name="order_price">
+        </div><!-- /.block-2 -->
+      </div><!-- /.row -->
+    </div><!-- /#step-4 -->
+    <div class="form-action">
+      <a href="/" class="btn btn-grey left">Cancel</a>
+      <button type="submit" class="btn btn-blue right send_to_api disabled">Confirm Booking</button>
+      <div class="clear"></div>
+    </div><!-- /.form-action -->
+  </form>
+</div><!-- /.lesson_calculator -->

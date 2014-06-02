@@ -1,0 +1,35 @@
+<div class="invoice">
+  <center><h4 style="margin-bottom:20px;">TAX INVOICE</h4></center>
+  <div class="left">DOMO ARIGATO ORIGAMI</div>
+  <div class="right">ABN: 276 432 170</div>
+  <div class="clear"></div>
+  <table>
+    <thead>
+      <tr>
+        <th>Number Of Lessons Booked:</th>
+        <td><%= @num_lessons %></td>
+      </tr>
+      <tr>
+        <th>Purchased Items:</th>
+        <td>$<%= @order_price %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>Subtotal:</th>
+        <td>$<%= @subtotal %></td>
+      </tr>
+      <tr>
+        <th>+ GST</th>
+        <td>$<%= @gst %></td>
+      </tr>
+      <tr>
+        <th>GRAND TOTAL:</th>
+        <td>$<%= @subtotal + @gst %> AUD</td>
+      </tr>
+    </thead>
+  </table>
+</div><!-- /.invoice -->
+<center><button class="btn btn-red" id="print" style="margin-top:30px;">Print</button></center>
