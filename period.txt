@@ -1,1 +1,3 @@
-Start 5th and final period
+End 5th and final lesson
+
+- No commits should be made after this point
