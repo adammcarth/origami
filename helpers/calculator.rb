@@ -1,7 +1,7 @@
-@lesson_price = 25
-
 def calculate_lesson_price(num_lessons=0, order_cost=0)
-  grand_total = num_lessons * @lesson_price
+  lesson_price = JTask.get("prices.json", 1).lesson_price.to_i
+
+  grand_total = num_lessons * lesson_price
   if num_lessons > 4
     # apply 20% discount
     grand_total = discount(grand_total, 0.2)
