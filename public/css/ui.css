@@ -207,6 +207,13 @@ input[type="checkbox"] {
   padding-left:6px;
   font-size:14px;
   cursor:pointer;
+  margin-bottom:0;
+  display:inline;
+}
+
+label {
+  display:block;
+  margin-bottom:10px;
 }
 
 /* Buttons */
@@ -275,4 +282,9 @@ a:visited.btn {
 .btn-orange {
   background:#efc400 !important;
   border-color:#f19d00 !important;
+}
+
+.btn-small {
+  padding:8px 15px;
+  font-size:13px;
 }
