@@ -80,6 +80,14 @@ $(document).ready(function() {
     }
   });
 
+  // Confirm to cancel lesson bookings
+  $(".cancel_lesson_booking").click(function() {
+    var change = confirm("Woah. Are you sure you want to delete the lesson booking? This action cannot be undone...");
+    if (change === false) {
+      event.preventDefault();
+    }
+  });
+
   // Only show the settings message once
   $("#msgRecieved").click(function() {
     $.ajax({

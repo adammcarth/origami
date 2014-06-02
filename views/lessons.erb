@@ -16,7 +16,7 @@
       <td><%= lesson.email %></td>
       <td><%= lesson.phone %></td>
       <td><%= DateTime.parse(lesson.lesson_time).strftime("%a %e %b, %G at %l%P") %></td>
-      <td><a href="/delete_booking/<%= lesson.id %>">Cancel</a></td>
+      <td><a href="/delete_lesson/<%= lesson.id %>" class="cancel_lesson_booking">Cancel</a></td>
     </tr>
     <% end %>
   </tbody>

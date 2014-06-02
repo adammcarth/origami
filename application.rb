@@ -28,7 +28,7 @@ class Origami < Sinatra::Base
     @lessons = JTask.get("lessons.json")
     @todays_lessons = Array.new
     @lessons.each do |lesson|
-      if Time.now.strftime("%a") == Date.parse(lesson.lesson_time).strftime("%a")
+      if Time.now.strftime("%d-%m") == Date.parse(lesson.lesson_time).strftime("%d-%m")
         @todays_lessons << lesson
       end
     end
@@ -91,11 +91,19 @@ class Origami < Sinatra::Base
     @lessons = Array.new
     @all_lessons.each do |lesson|
       # Only show lessons that are in the future
-      if DateTime.parse(lesson.lesson_time).strftime("%e-%b-%G") > Time.now.strftime("%e-%b-%G")
+      if DateTime.parse(lesson.lesson_time).strftime("%e-%b-%G") > Time.now.strftime("%e-%b-%G") or DateTime.parse(lesson.lesson_time).strftime("%e-%b-%G") == Time.now.strftime("%e-%b-%G")
         @lessons << lesson
       end
     end
     erb :lessons
+  end
+
+  get "/delete_lesson/:id" do
+    authenticate!
+    @name = JTask.get("lessons.json", params[:id].to_i).first_name
+    JTask.destroy("lessons.json", params[:id].to_i)
+    session[:notification] = ["warning", "#{@name}'s lesson has been successfully removed from the system."]
+    redirect "/lessons"
   end
 
   get "/settings" do
