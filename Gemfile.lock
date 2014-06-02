@@ -2,9 +2,13 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (3.6.0)
+    bcrypt (3.1.7)
     bcrypt (3.1.7-x86-mingw32)
+    bcrypt-ruby (3.1.5)
+      bcrypt (>= 3.1.3)
     bcrypt-ruby (3.1.5-x86-mingw32)
       bcrypt (>= 3.1.3)
+    chronic (0.10.2)
     erubis (2.7.0)
     indent (1.0)
     json (1.8.1)
@@ -31,10 +35,12 @@ GEM
     tilt (1.4.1)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
   bcrypt-ruby
+  chronic
   erubis
   indent
   jtask
