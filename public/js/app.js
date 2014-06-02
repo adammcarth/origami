@@ -5,9 +5,9 @@ var lastHeight = $(".content").outerHeight();
 function adjust_content() {
   // Adjust the `margin-top` on the content area if the size changes
   var topMargin = ($(window).height() - $(".wrapper").outerHeight()) / 2.2;
-  var tooFar = ($(window).height() - 200 - $(".wrapper").outerHeight());
+  var tooFar = ($(window).height() - 100 - $(".wrapper").outerHeight());
   if (tooFar < 0) {
-    topMargin = 100;
+    topMargin = 50;
     $(".wrapper").css("margin-bottom", topMargin);
   }
   $(".wrapper").css("margin-top", topMargin);
@@ -34,7 +34,7 @@ function notify(type, text, location) {
   }
 
   $(location).prepend('<div class="alert alert-' + type + '" style="display:none;">' + text + '<div class="close"></div></div>');
-  $(".alert").delay(200).slideDown(300);
+  $(".alert").delay(400).slideDown(300);
 }
 
 // ---------------------------------------------------------------------------------------------------- //
@@ -46,7 +46,6 @@ function notify(type, text, location) {
 $(window).load(function() {
   adjust_content();
   set_stack_height();
-  $(".alert").hide();
 });
 
 $(document).ready(function() {
@@ -69,7 +68,7 @@ $(document).ready(function() {
   });
 
   // Show the alerts already present on the page (currently hidden)
-  $(".alert").delay(200).slideDown(300);
+  $(".alert").delay(400).slideDown(300);
 
   // Update Settings Validations
   $("#update_settings").submit(function() {
@@ -79,5 +78,75 @@ $(document).ready(function() {
         event.preventDefault();
       }
     }
+  });
+
+  // Only show the settings message once
+  $("#msgRecieved").click(function() {
+    $.ajax({
+      url: "/msgRecieved"
+    });
+  });
+
+  // Show the lesson calculator
+  $("#book_lesson").click(function() {
+    $(".calendar").fadeOut(200);
+    $(".lesson_calculator").delay(100).slideDown(400);
+  });
+
+  // Initialize date-time fields
+  $(".date").pickadate({
+    min: [(new Date).getFullYear(), (new Date).getMonth(), (new Date).getDay()]
+  });
+  $(".time").pickatime({
+    interval: 60,
+    min: [9, 0],
+    max: [17, 0]
+  });
+
+  // Add name
+  $("#customer_fname").blur(function() {
+    if (!$(this).val()) {
+      $("#addName").text("How many lessons would they like to book?");
+    } else {
+      first_name = $(this).val();
+      $("#addName").text("How many lessons would " + first_name + " like to book?");
+    }
+  });
+
+  // Some sort of validation
+  function activateSubmit() {
+    $(".datetime:visible").each(function() {
+      if ($(this).val() != "") {
+        $("button.send_to_api").removeClass("disabled");
+      } else {
+        $("button.send_to_api").addClass("disabled");
+      }
+    });
+
+    setTimeout(activateSubmit, 0);
+  }
+
+  activateSubmit();
+
+  // Here we go...
+  $("#numLessons").change(function() {
+    if ($(this).val === "0") {
+      $("#step-3").hide();
+    } else {
+      $("#addName").remove();
+      $("#step-3").show();
+      $(".timeslot").hide();
+      $(".datetime").attr("name", "");
+      for(var i = 0; i < parseInt($("#numLessons").val()) + 1; i++) {
+        $("#date-" + i).attr("name", "[lesson_time][" + i + "]date");
+        $("#time-" + i).attr("name", "[lesson_time][" + i + "]time");
+        $("." + i.toString()).show();
+      }
+    }
+  });
+
+  // Print invoice
+  $("#print").click(function() {
+    $(".invoice").printArea({mode: "iframe"});
   });
 });
