@@ -1,0 +1,67 @@
+/* Respond UI to smaller devices (eg - tablets and smartphones) */@media(max-width: 768px) {
+  .wrapper {
+    width:100%;
+  }
+  .content {
+    width:90%;
+    border:0;
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  table {
+    width:90%;
+  }
+
+  .stack {
+    display:none;
+  }
+
+  body {
+    background:#FFF;
+  }
+}
+
+@media(max-width: 500px) {
+  .wrapper {
+    padding:0;
+  }
+
+  .content {
+    border:0;
+  }
+
+  .login {
+    width:240px;
+  }
+
+  .stack {
+    display:none;
+  }
+
+  .block, #step-4, .form-action {
+    display:block !important;
+    width:90% !important;
+  }
+
+  h1.business_name {
+    font-size:24px;
+  }
+
+  .btn {
+    display:block !important;
+  }
+
+  .btn-grey {
+    display:none !important;
+  }
+
+  select, .select-large, input[type="number"] {
+    width:90% !important;
+  }
+
+  .alert {
+    width:70% !important;
+  }
+}
