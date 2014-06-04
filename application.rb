@@ -81,7 +81,8 @@ class Origami < Sinatra::Base
     authenticate!
     @order_price = params[:order].to_i
     @num_lessons = params[:num_lessons].to_i
-    @subtotal = calculate_lesson_price(@num_lessons, @order_price)
+    @total_lesson_price = calculate_lesson_price(@num_lessons, @order_price)
+    @subtotal = @total_lesson_price + @order_price
     @gst = gst(@subtotal)
     erb :invoice
   end

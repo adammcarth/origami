@@ -10,12 +10,16 @@
         <td><%= @num_lessons %></td>
       </tr>
       <tr>
+        <th>Total Lesson Cost:</th>
+        <td>$<%= @total_lesson_price %></td>
+      </tr>
+      <tr>
         <th>Purchased Items:</th>
         <td>$<%= @order_price %></td>
       </tr>
       <tr>
-        <th></th>
-        <td></td>
+        <th><%= "".html_indent(1) %></th>
+        <td><%= "".html_indent(1) %></td>
       </tr>
       <tr>
         <th>Subtotal:</th>
