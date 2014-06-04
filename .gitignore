@@ -33,6 +33,3 @@ $RECYCLE.BIN/
 # Sublime Text
 *.sublime-workspace
 *.sublime-project
-
-# Stop local storage files from being deployed
-/storage/
