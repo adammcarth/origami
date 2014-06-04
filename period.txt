@@ -1,2 +1,2 @@
-start 6th and final lesson
-  - extra lesson granted
+end 6th and final lesson
+  - no commits should be made past this point
