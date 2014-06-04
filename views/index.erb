@@ -8,42 +8,44 @@
           <th>DETAILS</th>
         </tr>
       </thead>
+      <!-- Okay, this is awful - but I didn't have time to come up with something better. -->
+      <!-- Each "lesson" in @todays_lessons is an array containing the lesson ostruct at [0], and the 24 hour time at [1] -->
       <tbody>
         <tr>
           <td class="spec">9AM</td>
-          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "9" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+          <td><% @todays_lessons.each do |lesson| %><% if lesson[1] == "09" %><li><%= lesson[0].first_name %> <%= lesson[0].last_name %><% if lesson[0].notes != "" %><span class="light">: <%= lesson[0].notes %></span><% end %></li><% end %><% end %></td>
         </tr>
         <tr>
           <td class="specalt">10AM</td>
-          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "10" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+          <td><% @todays_lessons.each do |lesson| %><% if lesson[1] == "10" %><li><%= lesson[0].first_name %> <%= lesson[0].last_name %><% if lesson[0].notes != "" %><span class="light">: <%= lesson[0].notes %></span><% end %></li><% end %><% end %></td>
         </tr>
         <tr>
           <td class="spec">11AM</td>
-          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "11" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+          <td><% @todays_lessons.each do |lesson| %><% if lesson[1] == "11" %><li><%= lesson[0].first_name %> <%= lesson[0].last_name %><% if lesson[0].notes != "" %><span class="light">: <%= lesson[0].notes %></span><% end %></li><% end %><% end %></td>
         </tr>
         <tr>
           <td class="specalt">12PM</td>
-          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "12" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+          <td><% @todays_lessons.each do |lesson| %><% if lesson[1] == "12" %><li><%= lesson[0].first_name %> <%= lesson[0].last_name %><% if lesson[0].notes != "" %><span class="light">: <%= lesson[0].notes %></span><% end %></li><% end %><% end %></td>
         </tr>
         <tr>
           <td class="spec">1PM</td>
-          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "1" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+          <td><% @todays_lessons.each do |lesson| %><% if lesson[1] == "13" %><li><%= lesson[0].first_name %> <%= lesson[0].last_name %><% if lesson[0].notes != "" %><span class="light">: <%= lesson[0].notes %></span><% end %></li><% end %><% end %></td>
         </tr>
         <tr>
           <td class="specalt">2PM</td>
-          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "2" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+          <td><% @todays_lessons.each do |lesson| %><% if lesson[1] == "14" %><li><%= lesson[0].first_name %> <%= lesson[0].last_name %><% if lesson[0].notes != "" %><span class="light">: <%= lesson[0].notes %></span><% end %></li><% end %><% end %></td>
         </tr>
         <tr>
           <td class="spec">3PM</td>
-          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "3" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+          <td><% @todays_lessons.each do |lesson| %><% if lesson[1] == "15" %><li><%= lesson[0].first_name %> <%= lesson[0].last_name %><% if lesson[0].notes != "" %><span class="light">: <%= lesson[0].notes %></span><% end %></li><% end %><% end %></td>
         </tr>
         <tr>
           <td class="specalt">4PM</td>
-          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "4" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+          <td><% @todays_lessons.each do |lesson| %><% if lesson[1] == "16" %><li><%= lesson[0].first_name %> <%= lesson[0].last_name %><% if lesson[0].notes != "" %><span class="light">: <%= lesson[0].notes %></span><% end %></li><% end %><% end %></td>
         </tr>
         <tr>
           <td class="spec">5PM</td>
-          <td><% @todays_lessons.each do |lesson| %><% if DateTime.parse(lesson.lesson_time).strftime("%l") == "5" %><li><%= lesson.first_name %> <%= lesson.last_name %><% if lesson.notes != "" %><span class="light">: <%= lesson.notes %></span><% end %></li><% end %><% end %></td>
+          <td><% @todays_lessons.each do |lesson| %><% if lesson[1] == "17" %><li><%= lesson[0].first_name %> <%= lesson[0].last_name %><% if lesson[0].notes != "" %><span class="light">: <%= lesson[0].notes %></span><% end %></li><% end %><% end %></td>
         </tr>
       </tbody>
     </table>

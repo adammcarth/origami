@@ -29,7 +29,7 @@ class Origami < Sinatra::Base
     @todays_lessons = Array.new
     @lessons.each do |lesson|
       if Time.now.strftime("%e-%b-%G") == DateTime.parse(lesson.lesson_time).strftime("%e-%b-%G")
-        @todays_lessons << lesson
+        @todays_lessons << [lesson, DateTime.parse(lesson.lesson_time).strftime("%H")]
       end
     end
     # render the homepage UI
