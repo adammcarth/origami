@@ -1,2 +1,2 @@
-end 6th and final lesson
-  - no commits should be made past this point
+start first lesson for next outcome
+see commit details for more info.
