@@ -1,4 +1,12 @@
-<a href="/">Return to Dashboard</a>
+<div style="float: left;">
+  <a href="/">Return to Dashboard</a><br />
+  <h4 style="margin-top:20px;">Latest bookings...</h4>
+</div>
+<div style="float: right;">
+  <h2>0</h2>
+</div>
+<div style="clear:both;"></div>
+<% if @lessons[0] %>
 <table>
   <thead>
     <tr>
@@ -21,3 +29,6 @@
     <% end %>
   </tbody>
 </table>
+<% else %>
+<p style="margin-top:25px; color: #AAA; text-align:center;">Hooray! There are no future bookings in the system.</a></p>
+<% end %>
