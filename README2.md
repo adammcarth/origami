@@ -60,9 +60,9 @@ POST "/waiting_list" {
 
 | Scenario  | Test Data                                 | Expected Result | Actual Result   | Evidence             |
 |:---------:|:-----------------------------------------:|:---------------:|:---------------:|:--------------------:|
-| CREATE    | fname: Adam, lname: Mac, phone: xxxxxxx, email: x@x.com | true            | true            | [Screenshot][test-8] |
-| READ      | SELECT WHERE ID = `4`                     | 75              | 75              | [Screenshot][test-1] |
-| UPDATE    | UPDATE ID `5` WITH fname "John"           | 100             | 100             | [Screenshot][test-2] |
-| DESTROY   | DELETE ID `2`                             | 100             | 100             | [Screenshot][test-3] |
+| CREATE    | fname: Adam, lname: Mac, phone: 0234567854, email: x@x.com  | save | save     | [Screenshot][test-1] |
+| READ      | SELECT NAME WHERE ID = `4`                | Adam            | Adam            | [Screenshot][test-2] |
+| UPDATE    | UPDATE ID `5` WITH fname "John"           | John            | John            | [Screenshot][test-3] |
+| DESTROY   | DELETE ID `2`                             | nil             | nil             | [Screenshot][test-4] |
 | ...       |                                           |                 |                 |                      |
-| INVALID   | fname: , lname: , phone: Hi, email: No.   |                 |                 |                      |
+| INVALID   | fname: , lname: , phone: Hi, email: No.   | throw validation error | throw validation error | [Screenshot][test-5] |
