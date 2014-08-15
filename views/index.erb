@@ -4,8 +4,8 @@
     <table>
       <thead>
         <tr>
-          <th class="nobg">TIME</th>
-          <th>DETAILS</th>
+          <th class="nobg"><span class="icon-alarm"></span> TIME</th>
+          <th><span class="icon-help"></span> DETAILS</th>
         </tr>
       </thead>
       <!-- Okay, this is awful - but I didn't have time to come up with something better. -->
@@ -54,7 +54,9 @@
   <div class="row">
     <center>
       <button class="btn btn-green" style="display:inline; margin-right:10px;" id="book_lesson">Book a lesson</button>
-      <a href="/lessons" style="text-decoration:none;"><button class="btn btn-navy" style="display:inline;">Manage Bookings</button></a>
+      <div style="display:inline; position:relative;">
+        <button class="btn btn-navy" style="display:inline; padding-right:16px;">Manage Bookings<span class="icon-menu" style="padding-left:8px; top: 0.05em; position: relative;"></span></button>
+      </div>
     </center>
   </div><!-- /.row -->
 </div><!-- /.calendar -->
