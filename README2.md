@@ -6,7 +6,7 @@ In order to satisfy criteria outlined in the second Software Requirements Specif
 
 Takumi has been dealt with in the past, so it makes sense to build on top of the web application that has already been created for him. Since it was built on solid foundations with future expansion and scalability in mind, only a few minor tweeks and additions are required.
 
-Like last time, the new features will be implemented using Ruby. Data is already saved to text files in the existing system, so extending this functionality to handle a waiting list will save time and money. As always, my JTask library will be used to read and write to the text files. Again, you can find a full list of the currrent application's features in the foreword of the original `README.md` file.
+Like last time, the new features will be implemented using Ruby. Data is already saved to text files in the existing system, so extending this functionality to handle a waiting list will save time and money. As always, my JTask library will be used to read and write to the text files. New icons introduced are credit to the Open Source IcoMoo library. Again, you can find a full list of the currrent application's features in the foreword of the original `README.md` file.
 
 ### Annotated UI Mockup
 
