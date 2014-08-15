@@ -1,0 +1,37 @@
+When you explain that including security measures and encryption features into the solution will take a little longer and therefore cost a bit more, Takumi argues that as the data being transmitted is not snsitive in nautre you do not need to include security or encryption. Discuss this and present an arugment for inclusion of security and encryption.
+
+One of your friends, who is also a programmer has written a similar solution for another company and still has some of the code he created. He offers you this so that you can include it in your solution for Domo Arigato Origami. Should this offer be accepted? Explain why or why not.
+
+Create an annotated screen design of the app. 3 marks
+
+Data dictionary. 3 Marks
+
+Psuedocode Algorithm 5 Marks
+
+Create a testing table. 4 Marks.
+
+Development: 30 Marks
+
+User Documentation: (10 Marks)
+
+- Classes now capped at 5 per class.
+- New waiting list feature.
+- Waiting list capped at 20 potential clients.
+- Integrate waiting list into Manage Bookings button - new dropdown button feature.
+   "Booking Details", "Waiting List"
+Details: First name, Surname, Contact Number, Email and Timestamp of creation.
+- Full set of CRUD actions for the waiting list.
+- iPad integration - create icons etc for bookmarks.
+- New retina friendly icons.
+- New frontend javascript logic with spinning loader before each page load (prevent content area from starting at the top)
+- So content area must now be display: none;
+- Perhaps try and clean up the view logic that displays "What's on for today?"
+- Order details box in "New Booking" is confusing.
+- "There are no present bookings saved to the system." for booking/waiting list page.
+- Fix disabled footer links like wtf.
+- Fix responsive glitch. Perhaps box-sizing: border-box;?
+- In "What's on for today?", make each name a link that links to the  specific entry on the booking details page. So
+ each entry on the booking details page now needs an id "#id" to target in the URL.
+- Grey background on the hover of a name in "What's on for today?"
+- New icons for actions in manage bookings. Add edit functionality on top of the existing cancel feature.
+- Feeling a nice dark herokuy color scheme for the waiting list page. We'll see.
