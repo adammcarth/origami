@@ -100,6 +100,11 @@ class Origami < Sinatra::Base
     erb :lessons
   end
 
+  get "/waiting_list" do
+    authenticate!
+    erb :waiting_list
+  end
+
   get "/delete_lesson/:id" do
     authenticate!
     @name = JTask.get("lessons.json", params[:id].to_i).first_name
