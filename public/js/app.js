@@ -37,6 +37,11 @@ function notify(type, text, location) {
   $(".alert").delay(400).slideDown(300);
 }
 
+// Disable footer links
+$("a.current").click(function() {
+  event.preventDefault();
+});
+
 // ---------------------------------------------------------------------------------------------------- //
 // .................................................................................................... //
 // ---------------------------------------------------------------------------------------------------- //
@@ -156,5 +161,19 @@ $(document).ready(function() {
   // Print invoice
   $("#print").click(function() {
     $(".invoice").printArea({mode: "iframe"});
+  });
+
+  // Button popups
+  $(".popup").hover(function() {
+    $(".menu_popup").fadeIn(100);
+  });
+
+  $(".popup").mouseleave(function() {
+    $(".menu_popup").fadeOut(100);
+  });
+
+  $(".menu_popup li").hover(function() {
+    $(".menu_popup li").removeClass("hover");
+    $(this).addClass("hover");
   });
 });
