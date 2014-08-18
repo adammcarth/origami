@@ -1,0 +1,36 @@
+<form id="update_booking" action="/bookings/<%= @booking.id %>/edit" method="post">
+  <div id="step-1" style="margin-bottom:20px;">
+    <div class="customer_info">
+      <legend>Edit Booking Details</legend>
+      <div class="row">
+        <div class="block block-2">
+          <p>
+            <input type="text" id="customer_fname" name="customer_fname" placeholder="First Name" required="true" value="<%= @booking.first_name %>">
+          </p>
+          <p>
+            <input type="text" id="customer_lname" name="customer_lname" placeholder="Last Name" required="true" value="<%= @booking.last_name %>">
+          </p>
+          <p>
+            <input type="text" id="lesson_time" name="lesson_time" placeholder="Lesson Time" required="true" value="<%= DateTime.parse(@booking.lesson_time).strftime("%e/%I/%G at %l%P") %>">
+          </p>
+        </div><!-- /.block-2 -->
+        <div class="block block-2">
+          <p>
+            <input type="email" id="customer_email" name="customer_email" placeholder="Email" required="true" value="<%= @booking.email %>">
+          </p>
+          <p>
+            <input type="text" id="customer_phone" name="customer_phone" placeholder="Phone Number" required="true" value="<%= @booking.phone %>">
+          </p>
+          <p>
+            <input type="text" id="customer_address" name="customer_address" placeholder="Address" required="true" value="<%= @booking.address %>">
+          </p>
+        </div><!-- /.block-2 -->
+      </div><!-- /.row -->
+    </div><!-- /.customer-info -->
+  </div><!-- /#step-1 -->
+  <legend>Notes</legend>
+  <div class="row" style="margin-bottom:30px;">
+    <textarea id="notes" name="notes" style="height:125px;"><%= @booking.notes %></textarea>
+  </div><!-- /.row -->
+  <input type="submit" class="btn btn-purple right" value="Update">
+</form>

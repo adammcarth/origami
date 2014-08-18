@@ -1,0 +1,30 @@
+<div style="float: left;">
+  <a href="/">Return to Dashboard</a><br />
+  <h4 style="margin-top:20px;">Latest bookings...</h4>
+</div>
+<div style="float: right;">
+  <h2><%=  @lessons.count %></h2>
+</div>
+<div style="clear:both;"></div>
+<% if @lessons[0] %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Lesson Time</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lessons.each do |lesson| %>
+    <tr>
+      <td><%= lesson.first_name %> <%= lesson.last_name %></td>
+      <td><%= DateTime.parse(lesson.lesson_time).strftime("%a %e %b, %G at %l%P") %></td>
+      <td><a href="/bookings/<%= lesson.id %>">Details</a><span style="margin: 0 6px;">&#8226;</span><a href="/bookings/<%= lesson.id %>/edit">Edit</a><span style="margin: 0 6px;">&#8226;</span><a href="/delete_lesson/<%= lesson.id %>" class="cancel_lesson_booking" style="color: #AF1D1D;">Remove</a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p style="margin-top:25px; color: #AAA; text-align:center;">Uh oh! There are no future bookings in the system.</a></p>
+<% end %>

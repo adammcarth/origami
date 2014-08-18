@@ -1,0 +1,36 @@
+<h4>Add someone to the waiting list</h4>
+<form id="new_waiting_list" action="/waiting_list/new" method="post">
+  <div id="step-1" style="margin-bottom:20px;">
+    <div class="customer_info">
+      <legend>Basic Information</legend>
+      <div class="row">
+        <div class="block block-2">
+          <p>
+            <input type="text" id="customer_fname" name="customer_fname" placeholder="First Name" required="true">
+          </p>
+          <p>
+            <input type="text" id="customer_lname" name="customer_lname" placeholder="Last Name" required="true">
+          </p>
+        </div><!-- /.block-2 -->
+        <div class="block block-2">
+          <p>
+            <input type="email" id="customer_email" name="customer_email" placeholder="Email" required="true"
+          </p>
+          <p>
+            <input type="text" id="customer_phone" name="customer_phone" placeholder="Phone Number" required="true">
+          </p>
+          <p>
+            <input type="text" id="customer_address" name="customer_address" placeholder="Address" required="true">
+          </p>
+        </div><!-- /.block-2 -->
+      </div><!-- /.row -->
+    </div><!-- /.customer-info -->
+  </div><!-- /#step-1 -->
+  <legend>Notes</legend>
+  <div class="row" style="margin-bottom:30px;">
+    <textarea id="notes" name="notes" style="height:125px;"></textarea>
+  </div><!-- /.row -->
+  <a href="/waiting_list"><button type="button" class="btn btn-grey left">Cancel</button></a>
+  <input type="submit" class="btn btn-blue right" value="Add">
+  <div class="clear"></div>
+</form>

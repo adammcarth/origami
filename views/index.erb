@@ -54,9 +54,13 @@
   <div class="row">
     <center>
       <button class="btn btn-green" style="display:inline; margin-right:10px;" id="book_lesson">Book a lesson</button>
-      <div style="display:inline; position:relative;">
-        <button class="btn btn-navy" style="display:inline; padding-right:16px;">Manage Bookings<span class="icon-menu" style="padding-left:8px; top: 0.05em; position: relative;"></span></button>
-      </div>
+      <button class="btn btn-navy popup" style="display:inline; padding-right:16px; position: relative;">
+        <div class="menu_popup">
+          <a href="/bookings"><li class="hover"><span class="icon-calendar" style="padding-right: 7px;"></span>Upcoming Bookings</li></a>
+          <a href="/waiting_list"><li><span class="icon-pencil" style="padding-right: 7px;"></span>Waiting List</li></a>
+        </div><!-- /.menu_popup -->
+        Manage Bookings<span class="icon-menu" style="padding-left:8px; top: 0.05em; position: relative;"></span>
+      </button>
     </center>
   </div><!-- /.row -->
 </div><!-- /.calendar -->

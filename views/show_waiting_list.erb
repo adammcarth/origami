@@ -1,0 +1,18 @@
+<% if @list %>
+<ul>
+  <li><b>Name:</b> <%= @list.first_name %> <%= @list.last_name %></li>
+  <li><b>Email:</b> <a href="mailto:<%= @list.email %>"><%= @list.email %></a></li>
+  <li><b>Phone Number:</b> <%= @list.phone %></li>
+  <li><b>Address:</b> <%= @list.address %></li>
+  <li><b>Notes:</b> <%= @list.notes %></li>
+</ul>
+<p style="font-family: Arial; font-size: 10px; color: #AAA; margin-top:30px;">Last updated on <%= DateTime.parse(@list.updated_at).strftime("%a %e %b, %G at %l%P") %> by Takumi.</p>
+<div class="form-action" style="margin-top: 50px;">
+  <a href="/waiting_list"><button class="btn btn-grey left">Back</button></a>
+  <a href="/delete_waiting/<%= @list.id %>" class="cancel_lesson_booking"><button class="btn btn-red right">Delete</button></a>
+  <a href="/waiting_list/<%= @list.id %>/edit"><button style="margin-right: 10px;" class="btn btn-purple right">Edit</button></a>
+  <div class="clear"></div>
+</div><!-- /.form-action -->
+<% else %>
+<b>Error:</b> This booking has either been removed or referenced incorrectly in the URL.
+<% end %>

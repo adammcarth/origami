@@ -69,7 +69,9 @@ class Origami < Sinatra::Base
         phone: phone,
         address: address,
         notes: notes,
-        lesson_time: timestamp
+        lesson_time: timestamp,
+        created_at: Time.now,
+        updated_at: Time.now
       })
     end
 
@@ -87,7 +89,7 @@ class Origami < Sinatra::Base
     erb :invoice
   end
 
-  get "/lessons" do
+  get "/bookings" do
     authenticate!
     @all_lessons = JTask.get("lessons.json")
     @lessons = Array.new
@@ -95,14 +97,39 @@ class Origami < Sinatra::Base
       # Only show lessons that are in the future
       if DateTime.parse(lesson.lesson_time).strftime("%e-%b-%G") > Time.now.strftime("%e-%b-%G") or DateTime.parse(lesson.lesson_time).strftime("%e-%b-%G") == Time.now.strftime("%e-%b-%G")
         @lessons << lesson
+      else
+        # Auto destory lessons that have been completed.
+        JTask.destroy("lessons.json", lesson.id)
       end
     end
-    erb :lessons
+    erb :bookings
   end
 
-  get "/waiting_list" do
+  get "/bookings/:id" do
     authenticate!
-    erb :waiting_list
+    @booking = JTask.get("lessons.json", params[:id].to_i)
+    erb :show_booking
+  end
+
+  get "/bookings/:id/edit" do
+    authenticate!
+    @booking = JTask.get("lessons.json", params[:id].to_i)
+    erb :edit_booking
+  end
+
+  post "/bookings/:id/edit" do
+    JTask.update("lessons.json", params[:id].to_i, {
+      first_name: params[:customer_fname],
+      last_name: params[:customer_lname],
+      email: params[:customer_email],
+      phone: params[:customer_phone],
+      address: params[:customer_address],
+      lesson_time: Chronic.parse(params[:lesson_time]),
+      notes: params[:notes],
+      updated_at: Time.now
+    })
+    session[:notification] = ["info", "<b>Booking updated!</b> Nice work, #{params[:customer_fname]}'s booking has been updated successfully."]
+    redirect "/bookings/#{params[:id]}"
   end
 
   get "/delete_lesson/:id" do
@@ -110,7 +137,77 @@ class Origami < Sinatra::Base
     @name = JTask.get("lessons.json", params[:id].to_i).first_name
     JTask.destroy("lessons.json", params[:id].to_i)
     session[:notification] = ["warning", "#{@name}'s lesson has been successfully removed from the system."]
-    redirect "/lessons"
+    redirect "/bookings"
+  end
+
+  get "/waiting_list" do
+    authenticate!
+    @list = JTask.get("waiting.json")
+    erb :waiting_list
+  end
+
+  get "/waiting_list/new" do
+    authenticate!
+    @waiting_list = JTask.get("waiting.json")
+    if @waiting_list.count > 19
+      session[:notification] = ["error", "<b>Damn it.</b> The waiting list is completely full at the moment. You'll need to free up some space before another person can be added."]
+    end
+    erb :new_waiting_list
+  end
+
+  post "/waiting_list/new" do
+    authenticate!
+    @waiting_list = JTask.get("waiting.json")
+    if @waiting_list.count < 20
+      JTask.save("waiting.json", {
+        first_name: params[:customer_fname],
+        last_name: params[:customer_lname],
+        email: params[:customer_email],
+        phone: params[:customer_phone],
+        address: params[:customer_address],
+        notes: params[:notes],
+        created_at: Time.now,
+        updated_at: Time.now
+      })
+      session[:notification] = ["success", "<b>Saved!</b> #{params[:customer_fname]} has been saved to the waiting list."]
+      redirect "/waiting_list"
+    else
+      redirect "/waiting_list/new"
+    end
+  end
+
+  get "/waiting_list/:id" do
+    authenticate!
+    @list = JTask.get("waiting.json", params[:id].to_i)
+    erb :show_waiting_list
+  end
+
+  get "/waiting_list/:id/edit" do
+    authenticate!
+    @list_item = JTask.get("waiting.json", params[:id].to_i)
+    erb :edit_waiting_list
+  end
+
+  post "/waiting_list/:id/edit" do
+    authenticate!
+    JTask.update("waiting.json", params[:id].to_i, {
+      first_name: params[:customer_fname],
+      last_name: params[:customer_lname],
+      email: params[:customer_email],
+      phone: params[:customer_phone],
+      address: params[:customer_address],
+      notes: params[:notes],
+      updated_at: Time.now
+    })
+    session[:notification] = ["info", "<b>Sweet.</b> #{params[:customer_fname]}'s information has been successfully updated."]
+    redirect "/waiting_list/#{params[:id]}"
+  end
+
+  get "/delete_waiting/:id" do
+    authenticate!
+    JTask.destroy("waiting.json", params[:id].to_i)
+    session[:notification] = ["success", "The waiting list item has been successfully removed."]
+    redirect "/waiting_list"
   end
 
   get "/settings" do

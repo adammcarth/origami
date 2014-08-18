@@ -3,6 +3,32 @@
   <h4 style="margin-top:20px;">Waiting list...</h4>
 </div>
 <div style="float: right;">
-  <h2>0/20</h2>
+  <h2><%= @list.count %>/20</h2>
 </div>
 <div style="clear:both;"></div>
+<% if @list[0] %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Added</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @list.each do |person| %>
+    <tr>
+      <td><%= person.first_name %> <%= person.last_name %></td>
+      <td class="time_ago_anchor" title="<%= person.created_at %>"></td>
+      <td><a href="/waiting_list/<%= person.id %>">Details</a><span style="margin: 0 6px;">&#8226;</span><a href="/waiting_list/<%= person.id %>/edit">Edit</a><span style="margin: 0 6px;">&#8226;</span><a href="/delete_waiting/<%= person.id %>" class="cancel_lesson_booking" style="color: #AF1D1D;">Remove</a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<script type="text/javascript">
+$(".time_ago_anchor").timeago();
+</script>
+<% else %>
+  <p style="margin-top:25px; color: #AAA; text-align:center;">Hooray! There's no one on the waiting list.</a></p>
+<% end %>
+<a href="/waiting_list/new"><button class="btn btn-green right">New<span class="icon-plus" style="padding-left: 10px;"></span></button></a>

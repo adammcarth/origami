@@ -1,0 +1,35 @@
+<form id="update_waiting_list" action="/waiting_list/<%= @list_item.id %>/edit" method="post">
+  <div id="step-1" style="margin-bottom:20px;">
+    <div class="customer_info">
+      <legend>Edit Details</legend>
+      <div class="row">
+        <div class="block block-2">
+          <p>
+            <input type="text" id="customer_fname" name="customer_fname" placeholder="First Name" required="true" value="<%= @list_item.first_name %>">
+          </p>
+          <p>
+            <input type="text" id="customer_lname" name="customer_lname" placeholder="Last Name" required="true" value="<%= @list_item.last_name %>">
+          </p>
+        </div><!-- /.block-2 -->
+        <div class="block block-2">
+          <p>
+            <input type="email" id="customer_email" name="customer_email" placeholder="Email" required="true" value="<%= @list_item.email %>">
+          </p>
+          <p>
+            <input type="text" id="customer_phone" name="customer_phone" placeholder="Phone Number" required="true" value="<%= @list_item.phone %>">
+          </p>
+          <p>
+            <input type="text" id="customer_address" name="customer_address" placeholder="Address" required="true" value="<%= @list_item.address %>">
+          </p>
+        </div><!-- /.block-2 -->
+      </div><!-- /.row -->
+    </div><!-- /.customer-info -->
+  </div><!-- /#step-1 -->
+  <legend>Notes</legend>
+  <div class="row" style="margin-bottom:30px;">
+    <textarea id="notes" name="notes" style="height:125px;"><%= @list_item.notes %></textarea>
+  </div><!-- /.row -->
+  <a href="/waiting_list"><button type="button" class="btn btn-grey left">Cancel</button></a>
+  <input type="submit" class="btn btn-purple right" value="Update">
+  <div class="clear"></div>
+</form>
