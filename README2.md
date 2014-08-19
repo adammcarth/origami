@@ -12,7 +12,6 @@ Like last time, the new features will be implemented using Ruby. Data is already
 
 #### WaitList Model @ `storage/waiting_list.json`
 
-|:-------------:|:-------------:|:-----:|:----------------------------------------------------------------------------------|
 | Data Item     | Data Type     | Size* | Description                                                                       |
 |:-------------:|:-------------:|:-----:|:----------------------------------------------------------------------------------|
 | id            | string        | 255   | The unique id number of the lesson booking.                                       |
@@ -54,14 +53,15 @@ POST "/waiting_list" {
 
 ### Testing Table
 
-| Scenario  | Test Data                                 | Expected Result | Actual Result   | Evidence             |
-|:---------:|:-----------------------------------------:|:---------------:|:---------------:|:--------------------:|
-| CREATE    | fname: Adam, lname: Mac, phone: 0234567854, email: x@x.com  | save | save     | [Screenshot][test-1] |
-| READ      | SELECT NAME WHERE ID = `4`                | Adam            | Adam            | [Screenshot][test-2] |
-| UPDATE    | UPDATE ID `5` WITH fname "John"           | John            | John            | [Screenshot][test-3] |
-| DESTROY   | DELETE ID `2`                             | nil             | nil             | [Screenshot][test-4] |
-| ...       |                                           |                 |                 |                      |
-| INVALID   | fname: , lname: , phone: Hi, email: No.   | throw validation error | throw validation error | [Screenshot][test-5] |
+| Scenario  | Test Data                                 | Expected Result | Actual Result   |
+|:---------:|:-----------------------------------------:|:---------------:|:---------------:|
+| CREATE    | fname: Adam, lname: Mac, phone: 0234567854, email: x@x.com  | save | save     |
+| READ      | SELECT NAME WHERE ID = `4`                | Adam            | Adam            |
+| UPDATE    | UPDATE ID `5` WITH fname "John"           | John            | John            |
+| DESTROY   | DELETE ID `2`                             | nil             | nil             |
+| ...       |                                           |                 |                 |
+| INVALID   | fname: , lname: , phone: Hi, email: No.   | throw validation error | throw validation error |
+| INVALID   | 20 people on the waiting list already.    | throw error     | throw error     |
 
 ### Questions
 
