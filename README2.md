@@ -8,10 +8,6 @@ Takumi has been dealt with in the past, so it makes sense to build on top of the
 
 Like last time, the new features will be implemented using Ruby. Data is already saved to text files in the existing system, so extending this functionality to handle a waiting list will save time and money. As always, my JTask library will be used to read and write to the text files. New icons introduced are credit to the Open Source IcoMoo library. Again, you can find a full list of the currrent application's features in the foreword of the original `README.md` file.
 
-### Annotated UI Mockup
-
-...
-
 ### New Data Dictionary
 
 #### WaitList Model @ `storage/waiting_list.json`
@@ -19,13 +15,13 @@ Like last time, the new features will be implemented using Ruby. Data is already
 |:-------------:|:-------------:|:-----:|:----------------------------------------------------------------------------------|
 | Data Item     | Data Type     | Size* | Description                                                                       |
 |:-------------:|:-------------:|:-----:|:----------------------------------------------------------------------------------|
-| id            | string        | 255   | The unique id number of the lesson booking. |
-| first_name    | string        | 255   | The first name of the student. |
-| last_name     | string        | 255   | The last name of the student. |
-| email         | string        | 255   | Student's email address. |
-| phone         | string        | 255   | Student's phone number. |
-| created_at    | string        | 255   | Timestamp containing the exact date-time of the original save. |
-| updated_at    | string        | 255   | Timestamp of the last update of the record. |
+| id            | string        | 255   | The unique id number of the lesson booking.                                       |
+| first_name    | string        | 255   | The first name of the student.                                                    |
+| last_name     | string        | 255   | The last name of the student.                                                     |
+| email         | string        | 255   | Student's email address.                                                          |
+| phone         | string        | 255   | Student's phone number.                                                           |
+| created_at    | string        | 255   | Timestamp containing the exact date-time of the original save.                    |
+| updated_at    | string        | 255   | Timestamp of the last update of the record.                                       |
 
 > *The VCAA [clearly stipulates][vcaa] that "databases cannot be used to support solutions". Therefore, I will be using text files to create, read, update and destroy data for the system and the `size` of each data item will be irrelevant. It is worth noting, however, that in a real world scenario this technique would not be scalable and a proper database would be used to prevent the obvious security and performance issues.
 
