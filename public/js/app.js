@@ -54,6 +54,11 @@ $(window).load(function() {
 });
 
 $(document).ready(function() {
+  setTimeout(function() {
+    $(".ajax-loader").hide();
+    $(".wrapper").fadeIn(200);
+  }, 200);
+
   // Tooltips
   $(".tooltip, .tooltip-bottom").tipsy({gravity: "n", opacity: 1, html: true, offset: 4});
   $(".tooltip-top").tipsy({gravity: "s", opacity: 1, html: true, offset: 4});

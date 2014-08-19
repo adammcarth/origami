@@ -23,6 +23,14 @@
   height:auto;
   position:relative;
   margin:0px auto;
+  display: none;
+}
+
+.ajax-loader {
+  width: 220px;
+  height: 19px;
+  background: url(../img/ajax-loader.gif) no-repeat;
+  margin: 120px auto 0 auto;
 }
 
 /* Grid */
